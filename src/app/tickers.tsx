@@ -1,11 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { TickerData, TickerList } from "./types";
+import { TickerList } from "./types";
 import { useEffect } from "react";
-
-const roundToDecimals = (data: TickerData) =>
-  (Math.round(+data.lastPrice * 100) / 100).toFixed(2);
+import Link from "next/link";
+import { roundToDecimals } from "./utils";
 
 function Tickers({ data }: { data: TickerList }) {
   const router = useRouter();
@@ -20,16 +19,28 @@ function Tickers({ data }: { data: TickerList }) {
   }, [router]);
 
   return (
-    <div className="w-100 pt-4">
-      <div className="flex justify-between border-white border-t py-4 px-4">
-        <span>BTC / USD</span> <span>{roundToDecimals(data[0])} $</span>
-      </div>
-      <div className="flex justify-between border-white border-t py-4 px-4">
-        <span>BTC / EUR</span> <span>{roundToDecimals(data[1])} €</span>
-      </div>
-      <div className="flex justify-between border-white border-t border-b py-4 px-4">
-        <span>BTC / JPY</span> <span>{roundToDecimals(data[2])} ¥</span>
-      </div>
+    <div className="w-full pt-4">
+      <Link
+        href="/usd"
+        className="flex justify-between border-white border-t border-x py-4 px-4"
+      >
+        <span>BTC / USD</span>{" "}
+        <span>{roundToDecimals(+data[0].lastPrice)} $</span>
+      </Link>
+      <Link
+        href="/eur"
+        className="flex justify-between border-white border-t border-x py-4 px-4"
+      >
+        <span>BTC / EUR</span>{" "}
+        <span>{roundToDecimals(+data[1].lastPrice)} €</span>
+      </Link>
+      <Link
+        href="/jpy"
+        className="flex justify-between border-white border-t border-b border-x py-4 px-4"
+      >
+        <span>BTC / JPY</span>{" "}
+        <span>{roundToDecimals(+data[2].lastPrice)} ¥</span>
+      </Link>
     </div>
   );
 }
