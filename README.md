@@ -2,6 +2,8 @@ This app was developed using [Next.js](https://nextjs.org/) for the simplicity i
 
 All the pages in the application are Server Side Rendered.
 
+This project is using Binance as the source of data because it doesn't require an API key which simplifies the security steps needed to share secret API keys outside of github.
+
 ## Getting Started
 
 First, install the dependencies of the project
