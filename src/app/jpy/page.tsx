@@ -8,7 +8,7 @@ export default async function Jpy() {
     <main className="flex items-center flex-col">
       <div>Satoshi Money</div>
       <div>BTC / JPY</div>
-      <PairData data={data} />
+      <PairData data={data} currency="JPY" />
     </main>
   );
 }

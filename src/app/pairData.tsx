@@ -2,11 +2,13 @@
 
 import { useRouter } from "next/navigation";
 import { TickerData } from "./types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { roundToDecimals } from "./utils";
 
-function PairData({ data }: { data: TickerData }) {
+function PairData({ data, currency }: { data: TickerData; currency: string }) {
   const router = useRouter();
+  const [inputValue, setInputValue] = useState("");
+  const [equivalent, setEquivalent] = useState(0);
 
   useEffect(() => {
     const id = setInterval(() => {
@@ -16,6 +18,10 @@ function PairData({ data }: { data: TickerData }) {
     }, 10000);
     return () => clearInterval(id);
   }, [router]);
+
+  useEffect(() => {
+    setEquivalent(+inputValue / +data.lastPrice);
+  }, [data.lastPrice, inputValue]);
 
   return (
     <div className="w-full pt-4">
@@ -30,6 +36,19 @@ function PairData({ data }: { data: TickerData }) {
       </div>
       <div className="flex justify-between border-white border-t border-x border-b py-4 px-4">
         <span>Volume</span> <span>{roundToDecimals(+data.volume)}</span>
+      </div>
+      <div className="flex items-center justify-center pt-4">
+        Buy:
+        <input
+          className="text-black mx-2 w-24"
+          type="number"
+          value={inputValue}
+          onChange={e => setInputValue(e.target.value)}
+        />
+        {currency}
+      </div>
+      <div className="flex items-center justify-center pt-4">
+        Get {equivalent} BTC
       </div>
     </div>
   );

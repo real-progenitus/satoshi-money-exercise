@@ -8,7 +8,7 @@ export default async function Usd() {
     <main className="flex items-center flex-col">
       <div>Satoshi Money</div>
       <div>BTC / USD</div>
-      <PairData data={data} />
+      <PairData data={data} currency="USD" />
     </main>
   );
 }
