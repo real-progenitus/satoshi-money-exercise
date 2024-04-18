@@ -20,10 +20,16 @@ function Tickers({ data }: { data: TickerList }) {
   }, [router]);
 
   return (
-    <div>
-      Bitcoin Price: {roundToDecimals(data[0])} USD / &nbsp;
-      {roundToDecimals(data[1])} EUR / &nbsp;
-      {roundToDecimals(data[2])} JPY
+    <div className="w-100 pt-4">
+      <div className="flex justify-between border-white border-t py-4 px-4">
+        <span>BTC / USD</span> <span>{roundToDecimals(data[0])} $</span>
+      </div>
+      <div className="flex justify-between border-white border-t py-4 px-4">
+        <span>BTC / EUR</span> <span>{roundToDecimals(data[1])} €</span>
+      </div>
+      <div className="flex justify-between border-white border-t border-b py-4 px-4">
+        <span>BTC / JPY</span> <span>{roundToDecimals(data[2])} ¥</span>
+      </div>
     </div>
   );
 }

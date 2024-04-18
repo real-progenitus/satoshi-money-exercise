@@ -21,7 +21,7 @@ export default async function Home() {
   const data = await getPrices();
 
   return (
-    <main>
+    <main className="flex items-center flex-col">
       <div>Satoshi Money</div>
       <div>Exercise App</div>
       <Tickers data={data} />
