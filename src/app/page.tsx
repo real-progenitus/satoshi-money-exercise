@@ -7,7 +7,7 @@ export default async function Home() {
   const data = await getPrices();
 
   return (
-    <main className="flex items-center flex-col">
+    <main className="flex items-center flex-col md:text-3xl">
       <div>Satoshi Money</div>
       <div>Exercise App</div>
       <Tickers data={data} />

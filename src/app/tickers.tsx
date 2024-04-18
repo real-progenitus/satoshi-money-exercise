@@ -19,7 +19,7 @@ function Tickers({ data }: { data: TickerList }) {
   }, [router]);
 
   return (
-    <div className="w-full pt-4">
+    <div className="w-full pt-4 md:w-2/4">
       <Link
         href="/usd"
         className="flex justify-between border-white border-t border-x py-4 px-4"

@@ -24,7 +24,7 @@ function PairData({ data, currency }: { data: TickerData; currency: string }) {
   }, [data.lastPrice, inputValue]);
 
   return (
-    <div className="w-full pt-4">
+    <div className="w-full pt-4 md:w-2/4">
       <div className="flex justify-between border-white border-t border-x py-4 px-4">
         <span>Price</span> <span>{roundToDecimals(+data.lastPrice)} €</span>
       </div>
@@ -40,7 +40,7 @@ function PairData({ data, currency }: { data: TickerData; currency: string }) {
       <div className="flex items-center justify-center pt-4">
         Buy:
         <input
-          className="text-black mx-2 w-24"
+          className="text-black mx-2 w-24 md:w-48"
           type="number"
           value={inputValue}
           onChange={e => setInputValue(e.target.value)}
